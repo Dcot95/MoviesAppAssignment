@@ -25,26 +25,26 @@ const styles = {
 };
 
 export default function TvCard({ tv, action }) {
-  const { favourites, addToFavourites, mustWatch, addToMustWatch } = useContext(TvsContext);
+ /* const { tvfavourites, addToTvFavourites, tvmustWatch, addToTvMustWatch } = useContext(TvsContext);
 
-  if (favourites.find((id) => id === tv.id)) {
-    tv.favourite = true;
+  if (tvfavourites.find((id) => id === tv.id)) {
+    tv.tvfavourite = true;
   } else {
-    tv.favourite = false
+    tv.tvfavourite = false
   }
 
-  if (mustWatch.find((id) => id === tv.id)) {
-    tv.mustWatch = true;
+  if (tvmustWatch.find((id) => id === tv.id)) {
+    tv.tvmustWatch = true;
   } else {
-    tv.mustWatch = false
+    tv.tvmustWatch = false
   }
-
+*/
   return (
     <Card sx={styles.card}>
       <CardHeader
         sx={styles.header}
         avatar={
-          tv.favourite ? (
+          tv.tvfavourite ? (
             <Avatar sx={styles.avatar}>
               <FavoriteIcon />
             </Avatar>
@@ -56,7 +56,7 @@ export default function TvCard({ tv, action }) {
           </Typography>
         }
         action={
-          tv.mustWatch ? (
+          tv.tvmustWatch ? (
             <Avatar sx={styles.avatar}>
               <PlaylistAddIcon />
             </Avatar>

@@ -3,45 +3,45 @@ import React, { useState } from "react";
 export const TvsContext = React.createContext(null);
 
 const TvsContextProvider = (props) => {
-  const [myReviews, setMyReviews] = useState( {} ) 
-  const [favourites, setFavourites] = useState([]);
-  const [mustWatch, setMustWatch] = useState([]);
+  const [myTvReviews, setMyTvReviews] = useState( {} ) 
+  const [tvfavourites, setTvFavourites] = useState([]);
+  const [tvmustWatch, setTvMustWatch] = useState([]);
 
-  const addToFavourites = (tv) => {
-    let updatedFavourites = [...favourites];
-    if (!favourites.includes(tv.id)) {
-      updatedFavourites.push(tv.id);
+  const addToTvFavourites = (tv) => {
+    let updatedTvFavourites = [...tvfavourites];
+    if (!tvfavourites.includes(tv.id)) {
+      updatedTvFavourites.push(tv.id);
     }
-    setFavourites(updatedFavourites);
+    setTvFavourites(updatedTvFavourites);
   };
 
-  const addToMustWatch = (tv) => {
-    let updatedMustWatch = [...mustWatch];
-    if (!mustWatch.includes(tv.id)) {
-      updatedMustWatch.push(tv.id);
+  const addToTvMustWatch = (tv) => {
+    let updatedTvMustWatch = [...tvmustWatch];
+    if (!tvmustWatch.includes(tv.id)) {
+      updatedTvMustWatch.push(tv.id);
     }
-    setMustWatch(updatedMustWatch);
+    setTvMustWatch(updatedTvMustWatch);
     //console.log(updatedMustWatch);
   };
 
 
-  const removeFromFavourites = (tv) => {
-    setFavourites(favourites.filter((tId) => tId !== tv.id));
+  const removeFromTvFavourites = (tv) => {
+    setTvFavourites(tvfavourites.filter((tId) => tId !== tv.id));
   };
 
-  const addReview = (tv, review) => {  
-    setMyReviews( {...myReviews, [tv.id]: review } )
+  const addTvReview = (tv, tvreview) => {  
+    setMyTvReviews( {...myTvReviews, [tv.id]: tvreview } )
   };
 
   return (
     <TvsContext.Provider
       value={{
-        favourites,
-        mustWatch,
-        addToFavourites,
-        addToMustWatch,
-        removeFromFavourites,
-        addReview,  
+        tvfavourites,
+        tvmustWatch,
+        addToTvFavourites,
+        addToTvMustWatch,
+        removeFromTvFavourites,
+        addTvReview,  
       }}
     >
       {props.children}
