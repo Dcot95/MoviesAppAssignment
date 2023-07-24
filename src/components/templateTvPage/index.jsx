@@ -1,5 +1,5 @@
 import React from "react";
-import TvHeader from "../headeTv";
+import TvHeader from "../headerTv";
 import Grid from "@mui/material/Grid";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
@@ -41,7 +41,7 @@ const TemplateTvPage = ({ tv, children }) => {
       <Grid container spacing={5} style={{ padding: "15px" }}>
         <Grid item xs={3}>
           <div sx={styles.gridListRoot}>
-            <ImageList cols={1}>
+           <ImageList cols={1}>
               {tvimages.map((tvimage) => (
                 <ImageListItem
                   key={tvimage.file_path}
@@ -49,12 +49,12 @@ const TemplateTvPage = ({ tv, children }) => {
                   cols={1}
                 >
                   <img
-                    src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${tvimage.file_path}`}
                     alt={tvimage.poster_path}
                   />
                 </ImageListItem>
               ))}
-            </ImageList>
+            </ImageList> 
           </div>
         </Grid>
 

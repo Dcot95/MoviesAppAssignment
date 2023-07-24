@@ -28,7 +28,10 @@ const styles = {
 
 const TvHeader = (props) => {
   const tv = props.tv;
-  const favouriteTvs = JSON.parse(localStorage.getItem("tvfavourites"));
+  let favouriteTvs = JSON.parse(localStorage.getItem("tvfavourites"));
+  if (!favouriteTvs) {
+    favouriteTvs = []; 
+  }
   const isTvFavorite = favouriteTvs.some((t) => t.id === tv.id);
   
   return (

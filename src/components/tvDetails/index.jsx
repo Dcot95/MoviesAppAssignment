@@ -56,16 +56,13 @@ const TvDetails = ( {tv}) => {
       </Paper>
       <Paper component="ul" sx={styles.chipSet}>
         <Chip icon={<AccessTimeIcon />} label={`${tv.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${tv.revenue.toLocaleString()}`}
-        />
+        
         <Chip
           icon={<StarRate />}
           label={`${tv.vote_average} (${tv.vote_count}`}
         />
         <Chip label={`Released: ${tv.release_date}`} />
-      </Paper>
+      </Paper> 
       <Fab    
         color="secondary"
         variant="extended"

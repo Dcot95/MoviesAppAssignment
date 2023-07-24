@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 import HomePage from "./pages/homePage";
 import TvHomePage from "./pages/tvhomePage";
 import MoviePage from "./pages/movieDetailsPage";
+import TvPage from "./pages/tvDetailsPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
 import MovieReviewPage from "./pages/movieReviewPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
@@ -32,6 +33,7 @@ const App = () => {
           <MoviesContextProvider>
         <Routes>
           <Route path="/tv" element={<TvHomePage />} />
+          <Route path="/tvs/:id" element={<TvPage />} />
           <Route path="/movies/popular" element={<PopularMoviesPage />} />
           <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
           <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
