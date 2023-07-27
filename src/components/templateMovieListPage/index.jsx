@@ -22,11 +22,10 @@ function MovieListPageTemplate({ movies, title, vote_average, action }) {
   const [titleFilter, setTitleFilter] = useState("");
   const [vote_averageFilter, setVote_averageFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
-  const [yearFilter, setYearFilter] = useState("0");
+  const [release_dateFilter, setRelease_dateFilter] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const genreId = Number(genreFilter);
-  const yearId = Number(yearFilter);
 
   let displayedMovies = movies
     .filter((m) => {
@@ -41,14 +40,17 @@ function MovieListPageTemplate({ movies, title, vote_average, action }) {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     })
     .filter((m) => {
-      return yearId > 0 ? m.year_ids.includes(yearId) : true;
+      // Convert release_dateFilter to a comparable format (e.g., timestamp)
+      const filterValue = Date.parse(release_dateFilter);
+      // Check if the release_date of the movie is equal to the filter value
+      return release_dateFilter !== "" ? Date.parse(m.release_date) === filterValue : true;
     });
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);
     else if (type === "vote_average") setVote_averageFilter(value);
     else if (type === "genre") setGenreFilter(value);
-    else setYearFilter(value);
+    else setRelease_dateFilter(value);
   };
 
   return (
@@ -78,7 +80,7 @@ function MovieListPageTemplate({ movies, title, vote_average, action }) {
           onUserInput={handleChange}
           titleFilter={titleFilter}
           genreFilter={genreFilter}
-          yearFilter={yearFilter}
+          release_dateFilter={release_dateFilter}
           vote_averageFilter={vote_averageFilter}
         />
       </Drawer>
