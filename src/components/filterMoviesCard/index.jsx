@@ -7,7 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import SortIcon from "@mui/icons-material/Sort";
-import { getGenres } from "../../api/tmdb-api";
+import { getGenres, getYears } from "../../api/tmdb-api";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useQuery } from "react-query";
@@ -27,31 +27,42 @@ const styles = {
 };
 
 export default function FilterMoviesCard(props) {
-  const { data, error, isLoading, isError } = useQuery("genres", getGenres);
+  const { data: genresData, error: genresError, isLoading: genresLoading, isError: genresIsError } = useQuery("genres", getGenres);
+  const { data: yearsData, error: yearsError, isLoading: yearsLoading, isError: yearsIsError } = useQuery("years", getYears);
 
-  if (isLoading) {
+  if (genresLoading || yearsLoading) {
     return <Spinner />;
   }
 
-  if (isError) {
-    return <h1>{error.message}</h1>;
+  if (genresError || yearsError) {
+    return <h1>{genresError?.message || yearsError?.message}</h1>;
   }
-  const genres = data.genres;
-  if (genres[0].name !== "All") {
+
+  const genres = genresData?.genres || []; // Add a defensive check for genres
+  if (genres.length > 0 && genres[0].name !== "All") {
     genres.unshift({ id: "0", name: "All" });
   }
 
-  const handleUserImput = (e, type, value) => {
+  const years = yearsData?.years || []; // Add a defensive check for providers
+  if (years.length > 0 && years[0].name !== "All") {
+    years.unshift({ id: "0", name: "All" });
+  }
+
+  const handleUserInput = (e, type, value) => {
     e.preventDefault();
-    props.onUserInput(type, value); // NEW
+    props.onUserInput(type, value);
   };
 
-  const handleTextChange = (e, props) => {
-    handleUserImput(e, "title", e.target.value);
+  const handleTextChange = (e) => {
+    handleUserInput(e, "title", e.target.value);
   };
 
   const handleGenreChange = (e) => {
-    handleUserImput(e, "genre", e.target.value);
+    handleUserInput(e, "genre", e.target.value);
+  };
+
+  const handleYearChange = (e) => {
+    handleUserInput(e, "year", e.target.value);
   };
 
   return (
@@ -88,6 +99,15 @@ export default function FilterMoviesCard(props) {
               })}
             </Select>
           </FormControl>
+          <TextField
+            sx={styles.formControl}
+            id="filled-search"
+            label="Search field"
+            type="search"
+            value={props.yearFilter}
+            variant="filled"
+            onChange={handleYearChange}
+          />
         </CardContent>
       </Card>
       <Card sx={styles.root} variant="outlined">
