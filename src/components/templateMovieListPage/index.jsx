@@ -18,8 +18,9 @@ const styles = {
   },
 };
 
-function MovieListPageTemplate({ movies, title, action }) {
+function MovieListPageTemplate({ movies, title, vote_average, action }) {
   const [titleFilter, setTitleFilter] = useState("");
+  const [vote_averageFilter, setVote_averageFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [yearFilter, setYearFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -32,6 +33,11 @@ function MovieListPageTemplate({ movies, title, action }) {
       return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
+      // Convert vote_averageFilter to a number for comparison
+      const filterValue = parseFloat(vote_averageFilter);
+      return vote_averageFilter !== "" ? m.vote_average === filterValue : true;
+    })
+    .filter((m) => {
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     })
     .filter((m) => {
@@ -40,6 +46,7 @@ function MovieListPageTemplate({ movies, title, action }) {
 
   const handleChange = (type, value) => {
     if (type === "title") setTitleFilter(value);
+    else if (type === "vote_average") setVote_averageFilter(value);
     else if (type === "genre") setGenreFilter(value);
     else setYearFilter(value);
   };
@@ -72,6 +79,7 @@ function MovieListPageTemplate({ movies, title, action }) {
           titleFilter={titleFilter}
           genreFilter={genreFilter}
           yearFilter={yearFilter}
+          vote_averageFilter={vote_averageFilter}
         />
       </Drawer>
     </>  

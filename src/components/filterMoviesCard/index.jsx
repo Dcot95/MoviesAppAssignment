@@ -57,6 +57,10 @@ export default function FilterMoviesCard(props) {
     handleUserInput(e, "title", e.target.value);
   };
 
+  const handleVoteChange = (e) => {
+    handleUserInput(e, "vote_average", e.target.value);
+  };
+
   const handleGenreChange = (e) => {
     handleUserInput(e, "genre", e.target.value);
   };
@@ -102,11 +106,20 @@ export default function FilterMoviesCard(props) {
           <TextField
             sx={styles.formControl}
             id="filled-search"
-            label="Search field"
+            label="Year"
             type="search"
             value={props.yearFilter}
             variant="filled"
             onChange={handleYearChange}
+          />
+          <TextField
+            sx={styles.formControl}
+            id="filled-search"
+            label="Vote Average"
+            type="search"
+            value={props.vote_averageFilter}
+            variant="filled"
+            onChange={handleVoteChange}
           />
         </CardContent>
       </Card>
