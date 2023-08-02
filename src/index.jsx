@@ -14,7 +14,8 @@ import TrendingMoviesPage from "./pages/trendingMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
 import SiteHeader from "./components/siteHeader";
 import MoviesContextProvider from "./contexts/moviesContext";
-import AddMovieReviewPage from './pages/addMovieReviewPage'
+import AddMovieReviewPage from "./pages/addMovieReviewPage";
+import AddMovieFantasyPage from "./pages/addMovieFantasyPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ const App = () => {
         <SiteHeader />
           <MoviesContextProvider>
         <Routes>
+        <Route path="/movies/fantasy" element={<AddMovieFantasyPage/>} />
           <Route path="/tv" element={<TvHomePage />} />
           <Route path="/tvs/:id" element={<TvPage />} />
           <Route path="/movies/popular" element={<PopularMoviesPage />} />
