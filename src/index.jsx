@@ -14,6 +14,7 @@ import TrendingMoviesPage from "./pages/trendingMoviesPage";
 import PopularMoviesPage from "./pages/popularMoviesPage";
 import SiteHeader from "./components/siteHeader";
 import MoviesContextProvider from "./contexts/moviesContext";
+import TvsContextProvider from "./contexts/tvsContext";
 import AddMovieReviewPage from "./pages/addMovieReviewPage";
 import AddMovieFantasyPage from "./pages/addMovieFantasyPage";
 
@@ -33,6 +34,7 @@ const App = () => {
       <BrowserRouter>
         <SiteHeader />
           <MoviesContextProvider>
+          <TvsContextProvider>
         <Routes>
         <Route path="/movies/fantasy" element={<AddMovieFantasyPage/>} />
           <Route path="/tv" element={<TvHomePage />} />
@@ -47,6 +49,7 @@ const App = () => {
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        </TvsContextProvider>
         </MoviesContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />

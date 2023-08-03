@@ -25,7 +25,7 @@ const styles = {
 };
 
 export default function TvCard({ tv, action }) {
- /* const { tvfavourites, addToTvFavourites, tvmustWatch, addToTvMustWatch } = useContext(TvsContext);
+  const { tvfavourites, addToTvFavourites, tvmustWatch, addToTvMustWatch } = useContext(TvsContext);
 
   if (tvfavourites.find((id) => id === tv.id)) {
     tv.tvfavourite = true;
@@ -38,7 +38,7 @@ export default function TvCard({ tv, action }) {
   } else {
     tv.tvmustWatch = false
   }
-*/
+
   return (
     <Card sx={styles.card}>
       <CardHeader
