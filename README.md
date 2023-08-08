@@ -39,7 +39,7 @@ e.g.
 
 [Include a screenshot(s) from the Storybook UI and highlight the stories for new components developed.]
 
-e.g.
+e.g. ![storybook](image.png)
 
 ![][image5]
 
