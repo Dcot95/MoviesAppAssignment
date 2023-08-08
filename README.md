@@ -1,7 +1,7 @@
 
 # Full Stack Development 2 - Assignment.
 
-__Name:__ [your full name]
+__Name:__ David Cotter 
 
 ## Features.
 
@@ -37,11 +37,10 @@ e.g.
 
 ## Storybook.
 
-[Include a screenshot(s) from the Storybook UI and highlight the stories for new components developed.]
+See below screenshot of storybook UI, i have added TvDetails and TvCard on top of previously created stories.
 
 e.g. ![storybook](image.png)
 
-![][image5]
 
 ## Authentication. (if relevant)
 
@@ -69,10 +68,11 @@ e.g.
 
 ## Deployment (if relevant).
 
-[Specify the URL of your deployed app and include a screenshot(s) from your deployment platform account (e.g. Vercal) that verifies its use for this app. Set up a registered user for your app and specify their credentials.
+https://movies-app-assignment-six.vercel.app/ 
+Paritally functional.
+![deployed site](image-1.png)
 
-Username: test1 ; Password: pass1
-]
+![vercel dashboard](image-2.png)
 
 ## Persistence (if relevant).
 
